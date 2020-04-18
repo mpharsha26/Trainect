@@ -1,0 +1,48 @@
+<%- include("partials/header") %>
+
+<div class="container">
+	<div class="jumbotron">
+		<% if(users.length === 1) { %>
+			<h1>
+				Seems like you haven't got any company yet ...
+			</h1> 
+			<p>
+				Keep checking this app..Somebody might join you soon :') 
+			</p>
+		<% } else { %>
+			<h1 id="showHeader">
+				Your co-passengers list ( <%= users.length -1 %> ) :  
+			</h1>
+			<div class="row">
+				<% for(var i = 0; i<users.length; i++){ %>
+					<% if(users[i].roll_no === ignoredRollNo) { %>
+							<% continue; %>
+						<% } else { %>
+								<div class="col-sm-12 col-md-6 col-lg-4">
+									<div class="ui card m-2">
+										<div class="content">
+											<div class="header"><%= users[i].name %></div>
+											<div class="meta ml-4"><em>from</em> <%= users[i].branch.toUpperCase() %></div>
+											<div class="description">
+												<li>Roll No : <%= users[i].roll_no %></li>
+												<% if(users[i].departure) { %>
+													<li>Departure : <%= users[i].departure %></li>
+												<% } %>
+												<% if(users[i].arrival) {%>
+													<li>Arrival : <%= users[i].arrival %></li>
+												<% } %>
+											</div>
+										</div>
+									</div>
+								</div>
+						<% }} %>
+			</div>
+			<p class="mt-4">
+				<a href="/display">Display another user's list</a>	
+			</p>
+		<% } %>
+	</div>
+</div>
+
+
+<%- include("partials/footer") %>

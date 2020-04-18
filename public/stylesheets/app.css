@@ -1,0 +1,42 @@
+body{
+	font-size: 1.3em
+}
+
+.ui.header{
+	font-family: 'Comic Neue', cursive;
+	font-weight: 100;
+}
+
+.ui.main.text.container{
+	box-shadow: 0 0px 0px 0px white, 0 2px 0px 0px white, 6px 0 8px -4px rgba(0, 0, 0, 0.4), -6px 0 8px -4px rgba(0, 0, 0, 0.4);
+	margin-top: 7em;
+}
+
+.ui.fixed.menu{
+	background: darkolivegreen;
+}
+
+.ui.menu a{
+	font-size: 1.2em;
+}
+
+.ui.card .meta{
+	font-size : 0.8em;
+}
+.jumbotron{
+	font-family: "Nunito", sans-serif;
+	margin-top: 6em;
+	background: aliceblue;
+	
+}
+
+.jumbotron h4{
+	font-size: 1.2em;
+}
+.jumbotron h1{
+	font-family: serif;
+}
+
+#showHeader{
+	font-family: unset;
+}
