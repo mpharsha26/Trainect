@@ -9,21 +9,33 @@ router.get("/register", function(req, res){
 
 router.post("/register", function(req, res){
 	req.body.user.roll_no = req.body.user.roll_no.toUpperCase();
-	User.create(req.body.user, function(err, newUser){
+	User.findOne({roll_no:req.body.user.roll_no, train_no: req.body.user.train_no}, function(err,foundUser){
+		console.log(foundUser);
 		if(err)
-			console.log(err);
+			res.redirect("/");
 		else{
-			var no   = newUser.train_no;
-			var user = newUser._id;
-			var date = newUser.date;
-			var newTrain = { no : no , date: date, user : user};
-			Train.create(newTrain, function(err, newTrain){
-				if(err)
-					console.log(err);
-				else
-					res.redirect("/show/" + newUser.roll_no + "/" + newUser.train_no);
-			});
-		};
+			if(foundUser){
+				res.redirect("/show/" + req.body.user.roll_no + "/" + req.body.user.train_no);
+			}
+			else{
+				User.create(req.body.user, function(err, newUser){
+					if(err)
+						console.log(err);
+					else{
+						var no   = newUser.train_no;
+						var user = newUser._id;
+						var date = newUser.date;
+						var newTrain = { no : no , date: date, user : user};
+						Train.create(newTrain, function(err, newTrain){
+							if(err)
+								console.log(err);
+							else
+								res.redirect("/show/" + newUser.roll_no + "/" + newUser.train_no);
+						});
+					};
+				});
+			}
+		}
 	});
 });
 
