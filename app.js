@@ -10,6 +10,7 @@ var express = require("express"),
 	indexRoutes = require("./routes/index");
 
 mongoose.connect(process.env.DATABASEURL ,{useNewUrlParser: true,useUnifiedTopology: true});
+//mongoose.connect("mongodb://localhost:27017/trainectApp", {useNewUrlParser: true,useUnifiedTopology: true});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");

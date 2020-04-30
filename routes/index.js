@@ -8,19 +8,22 @@ router.get("/", function(req,res){
 
 router.get("/show/:roll_no/:train_no", function(req, res){
 		User.findOne({ roll_no: req.params.roll_no , train_no: req.params.train_no }, function(err, user){
-			if(err){
-				console.log(err);
-				res.send("Oops!! Check your url once again ...")
+			if(user == null){
+				res.render("unregistered");
 			}
 			else{
 				User.find({train_no: user.train_no, date: user.date}, function(err, requiredUsers){
 					if(err)
-						console.log(err);
+						res.redirect("/");
 					else
 						res.render("show", { users: requiredUsers, ignoredRollNo: req.params.roll_no });
 				});
 			}
 		});
 });
+
+router.get("*", function(req, res){
+	res.render("error");
+})
 
 module.exports = router;
