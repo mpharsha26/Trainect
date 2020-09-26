@@ -1,45 +1,108 @@
 <%- include("partials/header") %>
 
 <div class="container">
-	<div class="jumbotron">
-		<h1 class="display-4 text-center">TRAI-N-ECT</h1>
-		<p class="lead text-center">Welcome aboard NITCians  <i class="train icon"></i></p>
-		<hr class="my-4">
-		<h4 class="font-weight-normal">
-			This application was made to help students connect with their fellow mates travelling on the same train.
-		</h4>
-		<ul>
-			<li><strong>REGISTER</strong> - when you give your details for the first time.</li>
-			<li><strong>DISPLAY</strong> - when you've given the details already and wish to check the list.</li>
-		</ul>
-		<p>
-		  <button class="ui olive basic button" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
-			<i class="far fa-hand-point-right"></i> Some important things to remember
-		  </button>
-		</p>
-		<div class="collapse" id="collapseExample1">
-			<ol>
-				<li>Be very careful while giving the details because you cannot edit them once you've submitted.</li>
-				<li>Kindly give the <strong>travel date</strong> as per the format specified.Any deviation wouldn't give you correct results.</li>
-				<li>Trainect assumes your data to be very much <strong>authentic</strong>, so do not try any kind of pranks.</li>
-				<li>In case of any wrong submission, kindly reach out to the admin to fix them.</li>
-				<li>Admin's whatsapp no : 6303555937 ( No pranks plz &#128578; )</li>
-			</ol>
-		</div>
-		<p>
-		  <button class="ui grey basic button" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
-			  <i class="ui user outline icon"></i>Note from Admin
-		  </button>
-		</p>
-		<div class="collapse" id="collapseExample2">
+	<% if(currentUser){ %>
+		<div class="jumbotron">
+			<h1 class="display-4 text-center">Hey <%= currentUser.name %> !!</h1>
+			<hr class="my-4" />
 			<ul>
-				<li>Authentication was not put intentionally keeping the sole concept in the mind ( to keep it as simple as possible ).I've made this with an intention to deliver a quick service to the students.
-				</li>	
-				<li>Apologies for any kind of inconvenience caused. Requesting you to suppport the good motive behind this app.</li>
+				<li>
+				<strong>REGISTER</strong> - when you give your details for the first
+				time.
+				</li>
+				<li>
+				<strong>DISPLAY</strong> - when you've given the details already and
+				wish to check the list.
+				</li>
 			</ul>
-		</div>
-		Thank you so much for using this app...Have a pleasant and safe journey :') 
-	</div>
+			<p class="text-center">
+				<a href="/register" class="ui blue basic button">
+					<i class="registered outline icon"></i>
+					REGISTER
+				</a>
+				<a href="/display" class="ui grey basic button">
+					<i class="ui user outline icon"></i>
+					Display
+				</a>
+			</p>
+			<br>
+			Thank you very much for using this app...Have a pleasant and safe journey :')
+	<% } else { %>
+		<div class="jumbotron">
+			<h1 class="display-4 text-center">TRAI-N-ECT</h1>
+			<p class="lead text-center">
+			  Welcome aboard NITCians <i class="train icon"></i>
+			</p>
+			<hr class="my-4" />
+			<h3 class="font-weight-normal">
+			  This application was made to help students connect with their fellow mates
+			  travelling on the same train.
+			</h3>
+			<ul>
+			  <li>
+				<strong>LOGIN</strong> - Use your google/instagram account to login to this platform
+			  </li>
+			  <p>(you don't have to use your clg mail)</p>
+			</ul>
+			<p>
+			  <button
+				class="ui black basic button"
+				type="button"
+				data-toggle="collapse"
+				data-target="#collapseExample1"
+				aria-expanded="false"
+				aria-controls="collapseExample1"
+			  >
+				<i class="far fa-hand-point-right"></i> Some important things to
+				remember
+			  </button>
+			</p>
+			<div class="collapse" id="collapseExample1">
+			  <ol>
+				<li>
+				  Be very careful while giving the details because you cannot edit them
+				  once you've submitted.
+				</li>
+				<li>
+				  Trainect assumes your data to be very much <strong>authentic</strong>,
+				  so do not try any kind of pranks.
+				</li>
+				<li>
+				  In case of any wrong submission, kindly reach out to the admin to fix
+				  them.
+				</li>
+				<li>Admin's whatsapp no : 6303555937 ( No pranks plz &#128578; )</li>
+			  </ol>
+			</div>
+			<p>
+			  <button
+				class="ui blue basic button"
+				type="button"
+				data-toggle="collapse"
+				data-target="#collapseExample2"
+				aria-expanded="false"
+				aria-controls="collapseExample2"
+			  >
+				<i class="ui user outline icon"></i>Note from Admin
+			  </button>
+			</p>
+			<div class="collapse" id="collapseExample2">
+			  <ul>
+				<li>
+				  I've made this with an
+				  intention to deliver a quick service to the students.
+				</li>
+				<li>
+				  Apologies for any kind of inconvenience caused. Requesting you to
+				  suppport the good motive behind this app.
+				</li>
+			  </ul>
+			</div>
+			Thank you very much for using this app...Have a pleasant and safe journey :')
+		  </div>
+	<% } %>  
 </div>
+
+
 
 <%- include("partials/footer") %>

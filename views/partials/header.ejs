@@ -1,28 +1,53 @@
-<!Doctype HTML>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>TRAINECT</title>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-		
-		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-		<link href="/stylesheets/app.css" rel="stylesheet" type="text/css">
-		<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;1,400&family=Nunito:wght@200;300&display=swap" rel="stylesheet">
-		<script src="https://kit.fontawesome.com/1f823f9bf5.js" crossorigin="anonymous"></script>
-	</head>
-	<body>
-		<div class="ui fixed menu">
-			<div class="ui container">
-				<img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d0/National_Institute_of_Technology%2C_Calicut_Logo.png/220px-National_Institute_of_Technology%2C_Calicut_Logo.png" alt="" style="width: 53px; height: 65px; margin: 9px 0;">
-				<a class="item p-3" href="/">HOME</a>
-				<a class="item p-3" href="/register">REGISTER</a>	
-				<a class="item p-3" href="/display">DISPLAY</a>	
-			</div>
-		</div>
-		
-		
-		
-		
-	
-		
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>TRAINECT</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
+    <link href="/stylesheets/app.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;1,400&family=Nunito:wght@200;300&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/1f823f9bf5.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="ui menu">
+      <div class="ui container">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d0/National_Institute_of_Technology%2C_Calicut_Logo.png/220px-National_Institute_of_Technology%2C_Calicut_Logo.png"
+          alt=""
+          style="width: 53px; height: 65px; margin: 9px 0"
+        />
+		<a class="item p-3" href="/">HOME</a>
+		<% if (!currentUser) { %>
+			<a class="item p-3" href="/login">LOGIN</a>
+		<% } else { %>
+			<a class="item p-3" href="/logout">LOGOUT</a>
+		<% } %>  
+		<img
+          src="/images/LogoTrainect.jpg"
+          alt=""
+		  style="width: 85px; height: 85px; padding: 4px; border-radius: 100px;"
+		  class="ui right menu"
+        />
+      </div>
+    </div>

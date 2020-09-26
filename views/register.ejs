@@ -1,39 +1,51 @@
 <%- include("partials/header") %>
 
-
 <div class="ui main text container p-4 border border-secondary">
-	<div class="ui huge header text-center">
-		Your journey details plz	
+  <div class="ui huge header text-center">Your journey details plz</div>
+  <form class="ui form" action="/register" method="POST">
+    <div class="field">
+      <input type="text" name="user[name]" placeholder="Name" value="<%= currentUser.name %>" required />
+    </div>
+    <div class="field">
+      <input
+        type="text"
+        name="user[roll_no]"
+        placeholder="Institute Roll No."
+        required
+      />
+    </div>
+    <div class="field">
+      <input type="text" name="user[branch]" placeholder="Branch." required />
+    </div>
+    <div class="field">
+      <input
+        type="text"
+        name="user[train_no]"
+        placeholder="Train No."
+        required
+      />
 	</div>
-	<form class="ui form" action="/register" method="POST">
-		<div class="field">
-			<input type="text" name="user[name]" placeholder="Name" required>
-		</div>
-		<div class="field">
-			<input type="text" name="user[roll_no]" placeholder="Institute Roll No." required>
-		</div>
-		<div class="field">
-			<input type="text" name="user[branch]" placeholder="Branch." required>
-		</div>
-		<div class="field">
-			<input type="text" name="user[train_no]" placeholder="Train No." required>
-		</div>
-		<div class="field">
-			<input type="text" name="user[date]" placeholder="dd/mm/yy" required>
-		</div>
-		<div class="field">
-			<input type="text" name="user[departure]" placeholder="Departing Station (optional)">
-		</div>
-		<div class="field">
-			<input type="text" name="user[arrival]" placeholder="Arriving Station (optional)">
-		</div>
-		<button class="ui teal big basic button">Submit</button>
-		<p>
-			Already Registered ? <a href="/display">Display my co-passengers</a>
-		</p>
-	</form>
+	<div class="field">
+		<label>Date of Travel</label>  
+		<input type="date" name="user[date]" required>
+	</div>
+    <div class="field">
+      <input
+        type="text"
+        name="user[departure]"
+        placeholder="Departing Station (optional)"
+      />
+    </div>
+    <div class="field">
+      <input
+        type="text"
+        name="user[arrival]"
+        placeholder="Arriving Station (optional)"
+      />
+    </div>
+    <button class="ui teal big basic button">Submit</button>
+    <p>Already Registered ? <a href="/display">Display my co-passengers</a></p>
+  </form>
 </div>
-
-
 
 <%- include("partials/footer") %>

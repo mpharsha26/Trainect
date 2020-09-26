@@ -1,14 +1,26 @@
 var express = require("express");
 var router = express.Router();
+var User = require("../models/user");
 
-
-router.get("/display", function(req, res){
-	res.render("display");
+router.get("/display", ensureAuthenticated, function (req, res) {
+  User.findOne({ googleId: req.user.googleId }, function (err, foundUser) {
+    if (err) {
+      res.redirect("/");
+    } else {
+      if (foundUser) {
+        res.redirect("/show/" + req.user.roll_no + "/" + req.user.train_no);
+      } else {
+        res.render("unregistered");
+      }
+    }
+  });
 });
 
-router.post("/display", function(req, res){
-	req.body.roll_no = req.body.roll_no.toUpperCase();
-	res.redirect("/show/" + req.body.roll_no + "/" + req.body.train_no);
-});
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/login");
+}
 
 module.exports = router;

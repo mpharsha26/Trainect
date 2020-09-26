@@ -1,42 +1,60 @@
-var express = require("express");
-var router = express.Router();
-var User = require("../models/user");
-var Train = require("../models/train");
+const express = require("express");
+const router = express.Router();
+const User = require("../models/user");
 
-router.get("/register", function(req, res){
-	res.render("register");
+router.get("/register", ensureAuthenticated, function (req, res) {
+    res.render("register");
 });
 
-router.post("/register", function(req, res){
-	req.body.user.roll_no = req.body.user.roll_no.toUpperCase();
-	User.findOne({roll_no:req.body.user.roll_no, train_no: req.body.user.train_no}, function(err,foundUser){
-		console.log(foundUser);
-		if(err)
-			res.redirect("/");
-		else{
-			if(foundUser){
-				res.redirect("/show/" + req.body.user.roll_no + "/" + req.body.user.train_no);
-			}
-			else{
-				User.create(req.body.user, function(err, newUser){
-					if(err)
-						console.log(err);
-					else{
-						var no   = newUser.train_no;
-						var user = newUser._id;
-						var date = newUser.date;
-						var newTrain = { no : no , date: date, user : user};
-						Train.create(newTrain, function(err, newTrain){
-							if(err)
-								console.log(err);
-							else
-								res.redirect("/show/" + newUser.roll_no + "/" + newUser.train_no);
-						});
-					};
-				});
-			}
-		}
-	});
+router.post("/register", ensureAuthenticated, function (req, res) {
+  req.body.user.roll_no = req.body.user.roll_no.toUpperCase();
+  User.findOne({ roll_no: req.body.user.roll_no, train_no: req.body.user.train_no }, function (err, foundUser) {
+      //console.log(foundUser);
+      if (err) {
+        res.redirect("/");
+      }
+      else {
+        if (foundUser) {
+          res.redirect(
+            "/show/" + req.body.user.roll_no + "/" + req.body.user.train_no
+          );
+        } else {
+          User.findOne({googleId: req.user.googleId}, function(err, user){
+            if (err){
+              console.log(err);
+            }
+            else{
+              console.log(user, req.user);
+              user.name = req.body.user.name;
+              user.roll_no = req.body.user.roll_no;
+              user.branch = req.body.user.branch;
+              user.train_no = req.body.user.train_no;
+              user.date = req.body.user.date;
+              user.departure = req.body.user.departure;
+              user.arrival = req.body.user.arrival;
+              user.save(function(err, savedUser){
+                if (err){
+                  console.log(err);
+                }
+                else{
+                  //console.log("user saved successfully", savedUser);
+                  res.redirect("/show/" + savedUser.roll_no + "/" + savedUser.train_no);
+                }
+              });
+            }
+          });
+        }
+      }
+    }
+  );
 });
+
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { 
+    return next();
+  }
+  res.redirect('/login')
+}
 
 module.exports = router;
