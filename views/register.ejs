@@ -4,47 +4,52 @@
   <div class="ui huge header text-center">Your journey details plz</div>
   <form class="ui form" action="/register" method="POST">
     <div class="field">
-      <input type="text" name="user[name]" placeholder="Name" value="<%= currentUser.name %>" required />
-    </div>
-    <div class="field">
       <input
         type="text"
-        name="user[roll_no]"
-        placeholder="Institute Roll No."
+        name="roll_no"
+        placeholder="Institute Roll No"
         required
       />
     </div>
     <div class="field">
-      <input type="text" name="user[branch]" placeholder="Branch." required />
+      <input type="text" name="branch" placeholder="Branch" required />
     </div>
     <div class="field">
       <input
         type="text"
-        name="user[train_no]"
-        placeholder="Train No."
+        name="train_name"
+        placeholder="Train Name"
         required
       />
-	</div>
-	<div class="field">
-		<label>Date of Travel</label>  
-		<input type="date" name="user[date]" required>
-	</div>
+    </div>
     <div class="field">
       <input
         type="text"
-        name="user[departure]"
+        name="train_no"
+        placeholder="Train No"
+        required
+      />
+    </div>
+    <div class="field">
+      <label>Date of Travel</label>
+      <input type="date" name="date" required />
+    </div>
+    <div class="field">
+      <input
+        type="text"
+        name="departure"
         placeholder="Departing Station (optional)"
       />
     </div>
     <div class="field">
       <input
         type="text"
-        name="user[arrival]"
+        name="arrival"
         placeholder="Arriving Station (optional)"
       />
     </div>
     <button class="ui teal big basic button">Submit</button>
-    <p>Already Registered ? <a href="/display">Display my co-passengers</a></p>
+    <p>Already Registered ? Then check out <a href="/trips">My Trips</a></p>
   </form>
 </div>
 

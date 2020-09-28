@@ -34,7 +34,15 @@ body{
 	font-size: 1.5rem;
 }
 .jumbotron h1{
-	font-family: serif;
+	font-family: 'Times New Roman', Times, serif;
+}
+
+.jumbotron h2{
+	font-family: 'Comic Neue', cursive;
+}
+
+.jumbotron h1 span{
+	font-family: 'Comic Neue', cursive;
 }
 
 #showHeader{

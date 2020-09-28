@@ -5,16 +5,17 @@ const express = require("express"),
       mongoose = require("mongoose"),
       flash = require("connect-flash"),
       User = require("./models/user"),
+      Trip = require("./models/trip"),
       registerRoutes = require("./routes/register"),
       displayRoutes = require("./routes/display"),
       indexRoutes = require("./routes/index"),
       loginRoutes = require("./routes/login"),
+      tripsRoutes = require("./routes/trips");
       session = require('express-session'),
       passport = require("passport"),
-      passportLocalMongoose = require("passport-local-mongoose"),
       GoogleStrategy = require("passport-google-oauth20").Strategy,
-      FacebookStrategy = require('passport-facebook').Strategy,
-      findOrCreate = require("mongoose-findorcreate");
+      FacebookStrategy = require('passport-facebook').Strategy;
+
 
 mongoose.connect(process.env.DATABASEURL, {
   useNewUrlParser: true,
@@ -95,6 +96,7 @@ app.use(function(req, res, next){
 app.use(registerRoutes);
 app.use(displayRoutes);
 app.use(loginRoutes);
+app.use(tripsRoutes);
 app.use(indexRoutes);
 
 app.listen(process.env.PORT, function () {
