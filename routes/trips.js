@@ -15,14 +15,26 @@ router.get("/trips/:id", ensureAuthenticated, function (req, res){
         res.redirect("/trips");
       }
       else {
-        //console.log(foundTrip);
         res.render("show", {users: foundTrip.users});
       }
     });
 });
 
 router.get("/trips/:id/edit", ensureAuthenticated, function (req, res){
-  res.render("edit");
+  currentUser = req.user;
+  for(let i = 0; i<currentUser.trips.length; i++){
+    let trip = currentUser.trips[i];
+    if (trip.id.equals(req.params.id)){
+      currentUserTrip = {
+        train_name: currentUser.trips[i].train_name,
+        train_no: currentUser.trips[i].train_no,
+        date: currentUser.trips[i].date,
+        departure: currentUser.trips[i].departure,
+        arrival: currentUser.trips[i].arrival
+      }
+    }
+  }
+  res.render("edit", {currentUserTrip: currentUserTrip});
 })
 
 router.put("/trips/:id", ensureAuthenticated, function (req, res){
