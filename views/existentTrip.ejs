@@ -1,7 +1,21 @@
 <%- include("partials/header") %>
 
 <div class="container">
-    <p>Trip already exists</p>
+    <p>Matching journey record exists already.. Feel free to edit this one :')</p>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                  <h2 class="card-title"><%= trip.train_name %><span class="float-right" style="font-size: 1rem;"><%= trip.date.toDateString() %></span> </h2>
+                  <h6 class="card-subtitle mb-2 text-muted">Train No: <%= trip.train_no %></h6>
+                  <p class="card-text"><em>Departure</em> : <%= trip.departure || "-" %> ----------- <em>Arrival</em> : <%= trip.arrival || "-" %></p>
+                  <a href="/trips/<%= trip.id %>" class="card-link ui positive basic button">View</a>
+                  <a href="/trips/<%= trip.id %>/edit" class="card-link ui yellow basic button">Edit</a>
+                  <a href="/trips/<%= trip.id %>?_method=DELETE" class="card-link float-right ui red basic button">Remove</a>
+                </div>
+              </div>
+        </div>
+    </div>
 </div>
 
 

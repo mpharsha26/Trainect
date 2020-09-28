@@ -3,19 +3,19 @@
 <div class="container">
 	<div class="jumbotron">
 		<% if(users.length === 1) { %>
-			<h1>
+			<h1 class="ui huge header">
 				Seems like you haven't got any company yet ...
 			</h1> 
-			<p>
+			<h3 class="display-4">
 				Keep checking this app..Somebody might join you soon :') 
-			</p>
+			</h3>
 		<% } else { %>
 			<h1 id="showHeader">
 				Your co-passengers list ( <%= users.length -1 %> )  
 			</h1>
 			<div class="row">
 				<% for(var i = 0; i<users.length; i++){ %>
-					<% if(users[i].roll_no === ignoredRollNo) { %>
+					<% if(users[i].roll_no === currentUser.roll_no) { %>
 							<% continue; %>
 						<% } else { %>
 								<div class="col-sm-12 col-md-6 col-lg-4">
@@ -24,22 +24,13 @@
 											<div class="header"><%= users[i].name %></div>
 											<div class="meta ml-4"><em>from</em> <%= users[i].branch.toUpperCase() %></div>
 											<div class="description">
-												<li>Roll No : <%= users[i].roll_no %></li>
-												<% if(users[i].departure) { %>
-													<li>Departure : <%= users[i].departure %></li>
-												<% } %>
-												<% if(users[i].arrival) {%>
-													<li>Arrival : <%= users[i].arrival %></li>
-												<% } %>
+												<%= users[i].roll_no %>
 											</div>
 										</div>
 									</div>
 								</div>
 						<% }} %>
 			</div>
-			<p class="mt-4">
-				<a href="/display">Display another user's list</a>	
-			</p>
 		<% } %>
 	</div>
 </div>

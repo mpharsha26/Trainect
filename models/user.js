@@ -11,6 +11,10 @@ const userSchema = new mongoose.Schema({
   trips: [
     {
       _id: false,
+      id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Trip"
+      },
       train_name: String,
       train_no: String,
       date: Date,

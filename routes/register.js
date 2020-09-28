@@ -10,7 +10,7 @@ router.get("/register", ensureAuthenticated, function (req, res) {
 router.post("/register", ensureAuthenticated, function (req, res) {
   req.body.roll_no = req.body.roll_no.toUpperCase();
   Trip.find(
-    { date: req.body.date, train_no: req.body.train_no },
+    {date: req.body.date, train_no: req.body.train_no},
     {
       users: {
         $elemMatch: {
@@ -24,8 +24,15 @@ router.post("/register", ensureAuthenticated, function (req, res) {
         res.redirect("/");
       } else {
         if (foundTrip.length != 0) {
-          console.log(foundTrip);
-          res.render("existentTrip");
+          let user = req.user;
+          for (let i = 0; i<user.trips.length; i++){
+            if (user.trips[i].id.equals(foundTrip[0]._id)){
+                foundTrip = user.trips[i];
+                break;
+            }
+          }
+          //console.log(foundTrip);
+          res.render("existentTrip", {trip: foundTrip});
         } else {
           Trip.find(
             { train_no: req.body.train_no, date: req.body.date },
@@ -50,7 +57,10 @@ router.post("/register", ensureAuthenticated, function (req, res) {
                     res.redirect("/");
                   } else {
                     User.findById(req.user._id, function (err, user) {
+                      user.roll_no = req.body.roll_no;
+                      user.branch = req.body.branch;
                       user.trips.push({
+                        id: trip._id,
                         train_name: req.body.train_name,
                         train_no: req.body.train_no,
                         date: req.body.date,
