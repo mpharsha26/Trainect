@@ -1,4 +1,3 @@
-require("dotenv").config();
 const express = require("express"),
       app = express(),
       bodyParser = require("body-parser"),
@@ -14,8 +13,11 @@ const express = require("express"),
       session = require('express-session'),
       passport = require("passport"),
       GoogleStrategy = require("passport-google-oauth20").Strategy,
-      FacebookStrategy = require('passport-facebook').Strategy;
+      FacebookStrategy = require('passport-facebook').Strategy,
+      methodOverride = require("method-override");
 
+// enable usuage of env variable
+require("dotenv").config();      
 
 mongoose.connect(process.env.DATABASEURL, {
   useNewUrlParser: true,
@@ -28,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(flash());
 app.use(express.static("public"));
+app.use(methodOverride('_method'));
 
 
 app.use(
@@ -62,7 +65,7 @@ passport.use(
       userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
     },
     function (accessToken, refreshToken, profile, cb) {
-      //console.log(profile.displayName, profile);
+      //console.log(profile);
       User.findOrCreate({ googleId: profile.id, name: profile.displayName }, function (err, user) {
         return cb(err, user);
       });

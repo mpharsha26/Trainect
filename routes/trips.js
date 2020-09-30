@@ -26,6 +26,7 @@ router.get("/trips/:id/edit", ensureAuthenticated, function (req, res){
     let trip = currentUser.trips[i];
     if (trip.id.equals(req.params.id)){
       currentUserTrip = {
+        id: trip.id,
         train_name: currentUser.trips[i].train_name,
         train_no: currentUser.trips[i].train_no,
         date: currentUser.trips[i].date,
@@ -38,7 +39,7 @@ router.get("/trips/:id/edit", ensureAuthenticated, function (req, res){
 })
 
 router.put("/trips/:id", ensureAuthenticated, function (req, res){
-
+  
 });
 
 router.delete("/trips/:id", ensureAuthenticated, function (req, res){
