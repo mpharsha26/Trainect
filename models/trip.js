@@ -4,7 +4,7 @@ const tripSchema = new mongoose.Schema({
   train_name: String,
   train_no: String,
   date: Date,
-  user: {
+  traveller: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },

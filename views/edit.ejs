@@ -2,7 +2,7 @@
 
 <div class="ui main text container p-4 border border-secondary">
   <div class="ui huge header text-center">Edit the details here...</div>
-  <form class="ui form" action="/trips/<%= currentUserTrip.id %>?_method=PUT" method="POST">
+  <form class="ui form" action="/trips/<%= trip._id %>?_method=PUT" method="POST">
     <div class="field">
       <input
         type="text"
@@ -12,40 +12,42 @@
       />
     </div>
     <div class="field">
-      <input type="text" name="branch" value="<%= currentUser.branch %>" required />
+      <input type="text" name="branch" value="<%= currentUser.branch %>" disabled />
     </div>
     <div class="field">
       <input
         type="text"
-        name="train_name"
-        value="<%= currentUserTrip.train_name %>"
+        name="trip[train_name]"
+        value="<%= trip.train_name %>"
         required
       />
     </div>
     <div class="field">
       <input
         type="text"
-        name="train_no"
-        value="<%= currentUserTrip.train_no %>"
+        name="trip[train_no]"
+        value="<%= trip.train_no %>"
         required
       />
     </div>
     <div class="field">
       <label>Date of Travel</label>
-      <input type="date" name="date" value="<%= currentUserTrip.date %>" required />
+      <input type="date" name="trip[date]" value="<%= trip.date %>" required />
     </div>
     <div class="field">
       <input
         type="text"
-        name="departure"
-        value="<%= currentUserTrip.departure %>"
+        name="trip[departure]"
+        value="<%= trip.departure %>"
+        placeholder="Departing station (optional)"
       />
     </div>
     <div class="field">
       <input
         type="text"
-        name="arrival"
-        value="<%= currentUserTrip.arrival %>"
+        name="trip[arrival]"
+        value="<%= trip.arrival %>"
+        placeholder="Arriving station (optional)"
       />
     </div>
     <button class="ui teal big basic button">Edited</button>

@@ -6,22 +6,14 @@ const userSchema = new mongoose.Schema({
   googleId: String,
   facebookId: String,
   name: String,
-  roll_no: String,
-  branch: String,
-  // trips: [
-  //   {
-  //     _id: false,
-  //     id: {
-  //       type: mongoose.Schema.Types.ObjectId,
-  //       ref: "Trip"
-  //     },
-  //     train_name: String,
-  //     train_no: String,
-  //     date: Date,
-  //     departure: String,
-  //     arrival: String,
-  //   },
-  // ],
+  roll_no: {
+    type: String,
+    uppercase: true
+  },
+  branch: {
+    type: String,
+    uppercase: true
+  }
 });
 
 userSchema.plugin(passportLocalMongoose);

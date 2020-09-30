@@ -22,6 +22,7 @@ require("dotenv").config();
 mongoose.connect(process.env.DATABASEURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false
 });
 
 mongoose.set('useCreateIndex', true);

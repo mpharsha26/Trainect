@@ -2,7 +2,7 @@
 
 <div class="container">
 	<div class="jumbotron">
-		<% if(users.length === 1) { %>
+		<% if(trips.length === 1) { %>
 			<h1 class="ui huge header">
 				Seems like you haven't got any company yet ...
 			</h1> 
@@ -11,19 +11,20 @@
 			</h3>
 		<% } else { %>
 			<h1 id="showHeader">
-				Your co-passengers list ( <%= users.length -1 %> )  
+				Your co-passengers list ( <%= trips.length -1 %> )  
 			</h1>
 			<div class="row">
-				<% for(var i = 0; i<users.length; i++){ %>
-					<% if(users[i].roll_no === currentUser.roll_no) { %>
+				<% for(var i = 0; i<trips.length; i++){ %>
+					<% if(trips[i].traveller.roll_no === currentUser.roll_no) { %>
 							<% continue; %>
 						<% } else { %>
 								<div class="col-sm-12 col-md-6 col-lg-4">
 									<div class="ui card m-2">
 										<div class="content">
-											<div class="header"><%= users[i].name %></div>
-											<div class="meta ml-4"><em>from</em> <%= users[i].branch.toUpperCase() %></div>
+											<div class="header"><%= trips[i].traveller.name %></div>
+											<div class="meta ml-4"><em>from</em> <%= trips[i].traveller.branch.toUpperCase() %></div>
 											<div class="description">
+												
 											</div>
 										</div>
 									</div>
