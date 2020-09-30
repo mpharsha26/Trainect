@@ -62,7 +62,7 @@ passport.use(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: "http://trainect.herokuapp.com/auth/google/home",
+      callbackURL: process.env.CALLBACK_URL_GOOGLE,
       userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
     },
     function (accessToken, refreshToken, profile, cb) {
@@ -78,7 +78,7 @@ passport.use(
 passport.use(new FacebookStrategy({
   clientID: process.env.FACEBOOK_APP_ID,
   clientSecret: process.env.FACEBOOK_APP_SECRET,
-  callbackURL: "http://trainect.herokuapp.com/auth/facebook/home"
+  callbackURL: process.env.CALLBACK_URL_FACEBOOK
 },
 function(accessToken, refreshToken, profile, cb) {
   User.findOrCreate({ facebookId: profile.id, name: profile.displayName }, function (err, user) {
