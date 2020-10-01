@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   googleId: String,
   facebookId: String,
   name: String,
+  photo: String,
   roll_no: {
     type: String,
     uppercase: true

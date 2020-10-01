@@ -8,6 +8,11 @@
     />
     <title>TRAINECT</title>
     <link
+      rel="shortcut icon"
+      type="image/jpg"
+      href="/images/LogoTrainect.png"
+    />
+    <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -32,23 +37,29 @@
   <body>
     <div class="ui menu">
       <div class="ui container">
+        <a href="/">
+          <img
+            src="https://lh3.googleusercontent.com/proxy/UkZQfPnI81PTKTSy3AHnzAEx_mbPK_esFKZkWEsDh1qkez7f3LXbkbwBg6sBnrgR0h2flqeoIFHLdzqgRsrVCAWDWvg4MQXUmEVN-RvDz65t"
+            alt=""
+            style="width: 65px; height: 65px; margin: 9px 0"
+          />
+        </a>
+        <% if (!currentUser) { %>
+        <a class="item p-3" href="/">HOME</a>
+        <a class="item p-3" href="/login">LOGIN</a>
+        <% } else { %>
+        <a class="item p-3" href="/trips">My TRIPS</a>
+        <a class="item p-3" href="/logout"
+          ><i class="fa fa-sign-out" aria-hidden="true"></i>LOGOUT</a
+        >
+        <% } %>
         <img
-          src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d0/National_Institute_of_Technology%2C_Calicut_Logo.png/220px-National_Institute_of_Technology%2C_Calicut_Logo.png"
+          src="/images/LogoTrainect.png"
           alt=""
-          style="width: 53px; height: 65px; margin: 9px 0"
-        />
-		<a class="item p-3" href="/">HOME</a>
-		<% if (!currentUser) { %>
-			<a class="item p-3" href="/login">LOGIN</a>
-		<% } else { %>
-			<a class="item p-3" href="/trips">My TRIPS</a>
-			<a class="item p-3" href="/logout">LOGOUT</a>
-		<% } %>  
-		<img
-          src="/images/LogoTrainect.jpg"
-          alt=""
-		  style="width: 85px; height: 85px; padding: 4px; border-radius: 100px;"
-		  class="ui right menu"
+          style="width: 85px; height: 85px; padding: 4px"
+          class="ui right menu"
         />
       </div>
     </div>
+  </body>
+</html>
