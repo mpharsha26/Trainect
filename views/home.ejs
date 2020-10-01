@@ -1,17 +1,17 @@
 <%- include("partials/header") %>
 
 <div class="container">
-  <% if(currentUser){ %>
   <div class="jumbotron">
+    <% if(currentUser){ %>
     <div class="container">
-		<div class="row">
-			<div class="col-md-1 d-flex align-items-end">
-				<p class="hey">Hey,</p>
-			</div>
-			<div class="col-md-11">
-				<h1 class="display-4"><span><%= currentUser.name %> !!</span></h1>
-			</div>
-		</div>
+      <div class="row">
+        <div class="col-md-2 col-lg-1 d-flex align-items-end">
+          <p class="hey">Hey,</p>
+        </div>
+        <div class="col-md-10 col-lg-11">
+          <h1 class="display-4"><span><%= currentUser.name %> !</span></h1>
+        </div>
+      </div>
       <hr class="my-4" />
     </div>
 
@@ -28,9 +28,7 @@
       </a>
     </p>
     <br />
-    Thank you very much for using this app...Have a pleasant and safe journey
-    :') <% } else { %>
-    <div class="jumbotron">
+    <% } else { %>
       <h1 class="display-4 text-center">TRAI-N-ECT</h1>
       <p class="lead text-center">
         Welcome aboard NITCians <i class="train icon"></i>
@@ -63,19 +61,10 @@
       <div class="collapse" id="collapseExample1">
         <ol>
           <li>
-            Be very careful while giving the details because you cannot edit
-            them once you've submitted.
-          </li>
-          <li>
             Trainect assumes your data to be very much
             <strong>authentic</strong>, so do not try any kind of pranks.
           </li>
           <li>Don't login with both google and facebook. Use only one.</li>
-          <li>
-            In case of any wrong submission, kindly reach out to the admin to
-            fix them.
-          </li>
-          <li>Admin's whatsapp no : 6303555937 ( No pranks plz &#128578; )</li>
         </ol>
       </div>
       <p>
@@ -95,18 +84,21 @@
           <li>
             I've made this with an intention to deliver a quick service to the
             students.
-          </li>
+		  </li>
+		  <li>
+			  Delivery and Arrival stations of your journey partners wasn't put out due to security reasons.
+		  </li>
           <li>
             Apologies for any kind of inconvenience caused. Requesting you to
             suppport the good motive behind this app.
           </li>
         </ul>
       </div>
-      Thank you very much for using this app...Have a pleasant and safe journey
-      :')
-    </div>
-    <% } %>
+	<% } %>
+	Thank you very much for using this app...Have a pleasant and safe journey 😊
   </div>
 
-  <%- include("partials/footer") %>
+  
 </div>
+
+<%- include("partials/footer") %>

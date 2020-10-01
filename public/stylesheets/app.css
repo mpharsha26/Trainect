@@ -1,69 +1,77 @@
-body{
-	font-size: 1.3em;
-	/* background: rgb(26, 49, 95); */
-  	/* background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(26, 49, 95, 1)), color-stop(10%, rgba(26, 49, 95, 1)), color-stop(24%, rgba(29, 108, 141, 1)), color-stop(37%, rgba(41, 136, 151, 1)), color-stop(77%, rgba(39, 45, 100, 1)), color-stop(90%, rgba(26, 49, 95, 1)), color-stop(100%, rgba(26, 49, 95, 1))); */
-	  background: rgb(34,193,195);
-	  background: linear-gradient(201deg, rgba(34,193,195,1) 0%, rgba(245,227,190,1) 100%);
+body {
+  font-size: 1.3em;
+  /* background: rgb(34, 193, 195);
+  background: linear-gradient(
+    201deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(245, 227, 190, 1) 100%
+  ); */
+  background: rgb(34,193,195);
+background: linear-gradient(180deg, rgba(34,193,195,1) 0%, rgba(234,255,247,1) 100%);
 }
 
-.ui.header{
-	font-family: 'Comic Neue', cursive;
-	font-weight: 100;
+.ui.header {
+  font-family: "Comic Neue", cursive;
+  font-weight: 100;
 }
 
-.ui.main.text.container{
-	box-shadow: 0 0px 0px 0px white, 0 2px 0px 0px white, 6px 0 8px -4px rgba(0, 0, 0, 0.4), -6px 0 8px -4px rgba(0, 0, 0, 0.4);
-	/* margin-top: 1.5rem; */
-	background-color: white;
+.ui.main.text.container {
+  box-shadow: 0 0px 0px 0px white, 0 2px 0px 0px white,
+    6px 0 8px -4px rgba(0, 0, 0, 0.4), -6px 0 8px -4px rgba(0, 0, 0, 0.4);
+  background-color: white;
 }
 
-.ui.menu{
-	/* background: darkolivegreen; */
-	background: #0f3057;
-	border-radius: 0;
+.ui.menu {
+  background: #0f3057;
+  border-radius: 0;
 }
 
-.ui.menu .item{
-	color: white;
+.ui.menu .item {
+  color: white;
 }
 
-.ui.card .meta{
-	font-size : 0.8em;
+.ui.card .meta {
+  font-size: 0.8em;
 }
-.jumbotron{
-	font-family: "Nunito", sans-serif;
-	margin-top: 1rem;
-	/* background: aliceblue; */
-	background: #e7e7de;
-}
-
-.hey{
-	font-size: xx-large;
+.jumbotron {
+  font-family: "Nunito", sans-serif;
+  margin-top: 1rem;
+  /* background: aliceblue; */
+  /* background: #e7e7de; */
+  background: #e6ffec
 }
 
-.jumbotron h3{
-	font-size: 1.5rem;
-}
-.jumbotron h1{
-	font-family: 'Times New Roman', Times, serif;
+.hey {
+  font-size: xx-large;
 }
 
-.jumbotron h2{
-	font-family: 'Comic Neue', cursive;
+.show-image{
+	width: 60px;
+	border-radius: 50px;
 }
 
-.jumbotron h1 span{
-	font-family: 'Comic Neue', cursive;
-}
-
-#showHeader{
+#showHeader {
 	font-family: unset;
+	font-weight: 300;
+  }
+
+.jumbotron h3 {
+  font-size: 1.5rem;
+}
+.jumbotron h1 {
+  font-family: "Times New Roman", Times, serif;
 }
 
+.jumbotron h2 {
+  font-family: "Comic Neue", cursive;
+}
 
+.jumbotron h1 span {
+  font-family: "Comic Neue", cursive;
+}
 
-footer{
-	text-align: center;
-	font-family: serif;
-	font-size: small;
+footer {
+  text-align: center;
+  font-family: serif;
+  font-size: small;
 }

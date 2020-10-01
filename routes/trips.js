@@ -17,6 +17,7 @@ router.get("/trips/:id", ensureAuthenticated, function (req, res) {
       Trip.find({ date: foundTrip.date, train_no: foundTrip.train_no })
         .populate("traveller")
         .exec(function (err, trips) {
+          //console.log(trips);
           res.render("show", { trips: trips });
         });
     }

@@ -1,39 +1,35 @@
 <%- include("partials/header") %>
 
 <div class="container">
-	<div class="jumbotron">
-		<% if(trips.length === 1) { %>
-			<h1 class="ui huge header">
-				Seems like you haven't got any company yet ...
-			</h1> 
-			<h3 class="display-4">
-				Keep checking this app..Somebody might join you soon :') 
-			</h3>
-		<% } else { %>
-			<h1 id="showHeader">
-				Your co-passengers list ( <%= trips.length -1 %> )  
-			</h1>
-			<div class="row">
-				<% for(var i = 0; i<trips.length; i++){ %>
-					<% if(trips[i].traveller.roll_no === currentUser.roll_no) { %>
-							<% continue; %>
-						<% } else { %>
-								<div class="col-sm-12 col-md-6 col-lg-4">
-									<div class="ui card m-2">
-										<div class="content">
-											<div class="header"><%= trips[i].traveller.name %></div>
-											<div class="meta ml-4"><em>from</em> <%= trips[i].traveller.branch.toUpperCase() %></div>
-											<div class="description">
-												
-											</div>
-										</div>
-									</div>
-								</div>
-						<% }} %>
-			</div>
-		<% } %>
-	</div>
+  <div class="jumbotron">
+    <% if(trips.length === 1) { %>
+		<h1 class="ui huge header">
+			Seems like you haven't got any company yet ...
+		</h1>
+		<h3 class="display-4">
+			Keep checking this app..Somebody might join you soon :')
+		</h3>
+    <% } else { %>
+		<h1 id="showHeader">Your co-passengers list ( <%= trips.length -1 %> )</h1>
+		<div class="row">
+		<% trips.forEach(function(trip){ %> 
+			<% if(trip.traveller.roll_no != currentUser.roll_no) { %>
+				<div class="col-sm-12 col-md-6 col-lg-4">
+					<div class="ui card m-2">
+						<div class="content">
+							<div class="header">
+								<%= trip.traveller.name %>
+								<img src="<%= trip.traveller.photo %>" alt="" class="img-thumbnail float-right show-image">
+							</div>
+							<div class="meta ml-2"><em>from</em> <%= trip.traveller.branch.toUpperCase() %></div>
+							<div class="description"></div>
+						</div>
+					</div>
+				</div> 
+			<% } %>	
+		<% }); %>
+    <% } %>
+  </div>
 </div>
-
 
 <%- include("partials/footer") %>
