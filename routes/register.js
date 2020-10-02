@@ -29,7 +29,7 @@ router.post("/register", ensureAuthenticated, function (req, res){
               currentUser.roll_no = req.body.roll_no;
               currentUser.branch = req.body.branch;
               currentUser.save();
-              res.redirect("/trips");
+              res.redirect("/trips/" + trip._id);
             }
         });
       }

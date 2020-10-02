@@ -8,7 +8,7 @@ router.get("/trips", ensureAuthenticated, function (req, res) {
   });
 });
 
-router.get("/trips/:id", ensureAuthenticated, function (req, res) {
+router.get("/trips/:id", ensureAuthenticated, checkTripTraveller, function (req, res) {
   Trip.findById(req.params.id, function (err, foundTrip) {
     if (err) {
       console.log(err);
@@ -24,7 +24,7 @@ router.get("/trips/:id", ensureAuthenticated, function (req, res) {
   });
 });
 
-router.get("/trips/:id/edit", ensureAuthenticated, function (req, res) {
+router.get("/trips/:id/edit", ensureAuthenticated, checkTripTraveller, function (req, res) {
   Trip.findById(req.params.id, function (err, trip) {
     if (err) {
       console.log(err);
@@ -35,7 +35,7 @@ router.get("/trips/:id/edit", ensureAuthenticated, function (req, res) {
   });
 });
 
-router.put("/trips/:id", ensureAuthenticated, function (req, res) {
+router.put("/trips/:id", ensureAuthenticated, checkTripTraveller, function (req, res) {
   Trip.findByIdAndUpdate(req.params.id, req.body.trip, function (err, trip) {
     if (err) {
       console.log(err);
@@ -46,7 +46,7 @@ router.put("/trips/:id", ensureAuthenticated, function (req, res) {
   });
 });
 
-router.delete("/trips/:id", ensureAuthenticated, function (req, res) {
+router.delete("/trips/:id", ensureAuthenticated, checkTripTraveller, function (req, res) {
   Trip.findByIdAndDelete(req.params.id, function (err, trip) {
     if (err) {
       console.log(err);
@@ -62,6 +62,24 @@ function ensureAuthenticated(req, res, next) {
     return next();
   }
   res.redirect("/login");
+}
+
+
+function checkTripTraveller(req, res, next){
+  Trip.findById(req.params.id, function(err, trip){
+    if(err || !trip){
+      console.log(err);
+      res.redirect("/");
+    }
+    else{
+      if(trip.traveller.equals(req.user._id)){
+        return next();
+      }
+      else{
+        res.render("no_permission");
+      }
+    }
+  }); 
 }
 
 module.exports = router;
