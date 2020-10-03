@@ -3,17 +3,21 @@
 <div class="ui main text container p-4 border border-secondary">
   <div class="ui huge header text-center">Your journey details plz</div>
   <form class="ui form" action="/register" method="POST">
-    <div class="field">
-      <input
-        type="text"
-        name="roll_no"
-        placeholder="Institute Roll No"
-        required
-      />
-    </div>
-    <div class="field">
-      <input type="text" name="branch" placeholder="Branch" required />
-    </div>
+    <% if (!currentUser.roll_no){ %>
+      <div class="field">
+        <input
+          type="text"
+          name="roll_no"
+          placeholder="Institute Roll No"
+          required
+        />
+      </div>
+    <% } %> 
+    <% if (!currentUser.branch){ %>
+      <div class="field">
+        <input type="text" name="branch" placeholder="Branch" required />
+      </div>
+    <% } %>
     <div class="field">
       <input
         type="text"

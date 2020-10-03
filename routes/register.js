@@ -26,8 +26,12 @@ router.post("/register", ensureAuthenticated, function (req, res){
               trip.traveller = req.user._id;
               trip.save();
               currentUser = req.user;
-              currentUser.roll_no = req.body.roll_no;
-              currentUser.branch = req.body.branch;
+              if (!currentUser.roll_no){
+                currentUser.roll_no = req.body.roll_no;
+              }
+              if (!currentUser.branch){
+                currentUser.branch = req.body.branch;
+              }
               currentUser.save();
               res.redirect("/trips/" + trip._id);
             }

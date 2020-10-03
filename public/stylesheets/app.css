@@ -1,13 +1,11 @@
 body {
   font-size: 1.2rem;
-  /* background: rgb(34, 193, 195);
+  background: rgb(34, 193, 195);
   background: linear-gradient(
-    201deg,
+    180deg,
     rgba(34, 193, 195, 1) 0%,
-    rgba(245, 227, 190, 1) 100%
-  ); */
-  background: rgb(34,193,195);
-background: linear-gradient(180deg, rgba(34,193,195,1) 0%, rgba(234,255,247,1) 100%);
+    rgba(234, 255, 247, 1) 100%
+  );
 }
 
 .ui.header {
@@ -36,24 +34,22 @@ background: linear-gradient(180deg, rgba(34,193,195,1) 0%, rgba(234,255,247,1) 1
 .jumbotron {
   font-family: "Nunito", sans-serif;
   margin-top: 1rem;
-  /* background: aliceblue; */
-  /* background: #e7e7de; */
-  background: #e6ffec
+  background: #e6ffec;
 }
 
 .hey {
   font-size: xx-large;
 }
 
-.show-image{
-	width: 60px;
-	border-radius: 50px;
+.show-image {
+  width: 60px;
+  border-radius: 50px;
 }
 
 #showHeader {
-	font-family: unset;
-	font-weight: 300;
-  }
+  font-family: unset;
+  font-weight: 300;
+}
 
 .jumbotron h3 {
   font-size: 1.5rem;
